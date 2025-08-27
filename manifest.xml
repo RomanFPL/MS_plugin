@@ -13,17 +13,21 @@
   <IconUrl DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://romanfpl.github.io/MS_plugin/"/>
+
   <AppDomains>
     <AppDomain>https://romanfpl.github.io</AppDomain>
   </AppDomains>
+
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
+
   <Requirements>
     <Sets DefaultMinVersion="1.1">
       <Set Name="Mailbox"/>
     </Sets>
   </Requirements>
+
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
@@ -36,22 +40,27 @@
       </DesktopSettings>
     </Form>
   </FormSettings>
+
   <Permissions>ReadWriteMailbox</Permissions>
+
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
   </Rule>
 
+  <!-- Version Overrides -->
   <VersionOverrides xsi:type="mailappor:VersionOverrides" Version="1.0">
     <mailappor:Requirements>
       <mailappor:Sets DefaultMinVersion="1.8">
         <mailappor:Set Name="Mailbox"/>
       </mailappor:Sets>
     </mailappor:Requirements>
+
     <mailappor:Hosts>
       <mailappor:Host xsi:type="mailappor:MailHost">
         <mailappor:DesktopFormFactor>
           <mailappor:FunctionFile resid="residFunctionFileUrl"/>
+
           <mailappor:ExtensionPoint xsi:type="mailappor:MessageReadCommandSurface">
             <mailappor:OfficeTab id="TabDefault">
               <mailappor:Group id="msgread_group">
@@ -63,9 +72,9 @@
                     <mailappor:Description resid="residTaskpaneButtonTooltip"/>
                   </mailappor:Supertip>
                   <mailappor:Icon>
-                    <mailappor:bt:Image size="16" resid="icon16"/>
-                    <mailappor:bt:Image size="32" resid="icon32"/>
-                    <mailappor:bt:Image size="80" resid="icon80"/>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
                   </mailappor:Icon>
                   <mailappor:Action xsi:type="mailappor:ShowTaskpane">
                     <mailappor:SourceLocation resid="residTaskpaneUrl"/>
@@ -86,9 +95,9 @@
                     <mailappor:Description resid="residTaskpaneButtonTooltip"/>
                   </mailappor:Supertip>
                   <mailappor:Icon>
-                    <mailappor:bt:Image size="16" resid="icon16"/>
-                    <mailappor:bt:Image size="32" resid="icon32"/>
-                    <mailappor:bt:Image size="80" resid="icon80"/>
+                    <bt:Image size="16" resid="icon16"/>
+                    <bt:Image size="32" resid="icon32"/>
+                    <bt:Image size="80" resid="icon80"/>
                   </mailappor:Icon>
                   <mailappor:Action xsi:type="mailappor:ShowTaskpane">
                     <mailappor:SourceLocation resid="residTaskpaneUrl"/>
@@ -98,24 +107,29 @@
             </mailappor:OfficeTab>
           </mailappor:ExtensionPoint>
 
+          <!-- Resources must use the bt: namespace (NOT mailappor:bt:...) -->
           <mailappor:Resources>
-            <mailappor:bt:Images>
-              <mailappor:bt:Image id="icon16" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-16.png"/>
-              <mailappor:bt:Image id="icon32" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-32.png"/>
-              <mailappor:bt:Image id="icon80" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-80.png"/>
-            </mailappor:bt:Images>
-            <mailappor:bt:Urls>
-              <mailappor:bt:Url id="residTaskpaneUrl" DefaultValue="https://romanfpl.github.io/MS_plugin/taskpane.html"/>
-              <mailappor:bt:Url id="residFunctionFileUrl" DefaultValue="https://romanfpl.github.io/MS_plugin/taskpane.html"/>
-            </mailappor:bt:Urls>
-            <mailappor:bt:ShortStrings>
-              <mailappor:bt:String id="residGroupLabel" DefaultValue="Simple Reply"/>
-              <mailappor:bt:String id="residTaskpaneButtonLabel" DefaultValue="Open Reply Pane"/>
-            </mailappor:bt:ShortStrings>
-            <mailappor:bt:LongStrings>
-              <mailappor:bt:String id="residTaskpaneButtonTooltip" DefaultValue="Open the pane to fetch a reply from your API and insert it."/>
-            </mailappor:bt:LongStrings>
+            <bt:Images>
+              <bt:Image id="icon16" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-16.png"/>
+              <bt:Image id="icon32" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-32.png"/>
+              <bt:Image id="icon80" DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-80.png"/>
+            </bt:Images>
+
+            <bt:Urls>
+              <bt:Url id="residTaskpaneUrl" DefaultValue="https://romanfpl.github.io/MS_plugin/taskpane.html"/>
+              <bt:Url id="residFunctionFileUrl" DefaultValue="https://romanfpl.github.io/MS_plugin/taskpane.html"/>
+            </bt:Urls>
+
+            <bt:ShortStrings>
+              <bt:String id="residGroupLabel" DefaultValue="Simple Reply"/>
+              <bt:String id="residTaskpaneButtonLabel" DefaultValue="Open Reply Pane"/>
+            </bt:ShortStrings>
+
+            <bt:LongStrings>
+              <bt:String id="residTaskpaneButtonTooltip" DefaultValue="Open the pane to fetch a reply from your API and insert it."/>
+            </bt:LongStrings>
           </mailappor:Resources>
+
         </mailappor:DesktopFormFactor>
       </mailappor:Host>
     </mailappor:Hosts>
