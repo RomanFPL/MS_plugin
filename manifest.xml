@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
+  xsi:type="MailApp">
+  <Id>c8c8a5f1-2c9f-46d1-9f2a-4c8c0f9a0123</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Demo</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Simple Reply Add-in"/>
+  <Description DefaultValue="Fetch a reply from your API and insert into the draft."/>
+  <IconUrl DefaultValue="https://YOUR_PUBLIC_BASE_URL/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://YOUR_PUBLIC_BASE_URL/assets/icon-80.png"/>
+  <SupportUrl DefaultValue="https://YOUR_PUBLIC_BASE_URL/"/>
+  <AppDomains>
+    <AppDomain>https://YOUR_PUBLIC_BASE_URL</AppDomain>
+  </AppDomains>
+  <Hosts><Host Name="Mailbox"/></Hosts>
+  <Requirements><Sets DefaultMinVersion="1.1"><Set Name="Mailbox"/></Sets></Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead"><DesktopSettings>
+      <SourceLocation DefaultValue="https://YOUR_PUBLIC_BASE_URL/taskpane.html"/>
+    </DesktopSettings></Form>
+    <Form xsi:type="ItemEdit"><DesktopSettings>
+      <SourceLocation DefaultValue="https://YOUR_PUBLIC_BASE_URL/taskpane.html"/>
+    </DesktopSettings></Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
+  </Rule>
+
+  <VersionOverrides xsi:type="mailappor:VersionOverrides" Version="1.0">
+    <mailappor:Requirements><mailappor:Sets DefaultMinVersion="1.8"><mailappor:Set Name="Mailbox"/></mailappor:Sets></mailappor:Requirements>
+    <mailappor:Hosts><mailappor:Host xsi:type="mailappor:MailHost">
+      <mailappor:DesktopFormFactor>
+        <mailappor:FunctionFile resid="residFunctionFileUrl"/>
+        <mailappor:ExtensionPoint xsi:type="mailappor:MessageReadCommandSurface">
+          <mailappor:OfficeTab id="TabDefault">
+            <mailappor:Group id="msgread_group">
+              <mailappor:Label resid="residGroupLabel"/>
+              <mailappor:Control xsi:type="mailappor:Button" id="msgread_openpane">
+                <mailappor:Label resid="residTaskpaneButtonLabel"/>
+                <mailappor:Supertip>
+                  <mailappor:Title resid="residTaskpaneButtonLabel"/>
+                  <mailappor:Description resid="residTaskpaneButtonTooltip"/>
+                </mailappor:Supertip>
+                <mailappor:Icon>
+                  <mailappor:bt:Image size="16" resid="icon16"/>
+                  <mailappor:bt:Image size="32" resid="icon32"/>
+                  <mailappor:bt:Image size="80" resid="icon80"/>
+                </mailappor:Icon>
+                <mailappor:Action xsi:type="mailappor:ShowTaskpane">
+                  <mailappor:SourceLocation resid="residTaskpaneUrl"/>
+                </mailappor:Action>
+              </mailappor:Control>
+            </mailappor:Group>
+          </mailappor:OfficeTab>
+        </mailappor:ExtensionPoint>
+
+        <mailappor:ExtensionPoint xsi:type="mailappor:MessageComposeCommandSurface">
+          <mailappor:OfficeTab id="TabDefaultCompose">
+            <mailappor:Group id="msgcompose_group">
+              <mailappor:Label resid="residGroupLabel"/>
+              <mailappor:Control xsi:type="mailappor:Button" id="msgcompose_openpane">
+                <mailappor:Label resid="residTaskpaneButtonLabel"/>
+                <mailappor:Supertip>
+                  <mailappor:Title resid="residTaskpaneButtonLabel"/>
+                  <mailappor:Description resid="residTaskpaneButtonTooltip"/>
+                </mailappor:Supertip>
+                <mailappor:Icon>
+                  <mailappor:bt:Image size="16" resid="icon16"/>
+                  <mailappor:bt:Image size="32" resid="icon32"/>
+                  <mailappor:bt:Image size="80" resid="icon80"/>
+                </mailappor:Icon>
+                <mailappor:Action xsi:type="mailappor:ShowTaskpane">
+                  <mailappor:SourceLocation resid="residTaskpaneUrl"/>
+                </mailappor:Action>
+              </mailappor:Control>
+            </mailappor:Group>
+          </mailappor:OfficeTab>
+        </mailappor:ExtensionPoint>
+
+        <mailappor:Resources>
+          <mailappor:bt:Images>
+            <mailappor:bt:Image id="icon16" DefaultValue="https://YOUR_PUBLIC_BASE_URL/assets/icon-16.png"/>
+            <mailappor:bt:Image id="icon32" DefaultValue="https://YOUR_PUBLIC_BASE_URL/assets/icon-32.png"/>
+            <mailappor:bt:Image id="icon80" DefaultValue="https://YOUR_PUBLIC_BASE_URL/assets/icon-80.png"/>
+          </mailappor:bt:Images>
+          <mailappor:bt:Urls>
+            <mailappor:bt:Url id="residTaskpaneUrl" DefaultValue="https://YOUR_PUBLIC_BASE_URL/taskpane.html"/>
+            <mailappor:bt:Url id="residFunctionFileUrl" DefaultValue="https://YOUR_PUBLIC_BASE_URL/taskpane.html"/>
+          </mailappor:bt:Urls>
+          <mailappor:bt:ShortStrings>
+            <mailappor:bt:String id="residGroupLabel" DefaultValue="Simple Reply"/>
+            <mailappor:bt:String id="residTaskpaneButtonLabel" DefaultValue="Open Reply Pane"/>
+          </mailappor:bt:ShortStrings>
+          <mailappor:bt:LongStrings>
+            <mailappor:bt:String id="residTaskpaneButtonTooltip" DefaultValue="Open the pane to fetch a reply from your API and insert it."/>
+          </mailappor:bt:LongStrings>
+        </mailappor:Resources>
+      </mailappor:DesktopFormFactor>
+    </mailappor:Host></mailappor:Hosts>
+  </VersionOverrides>
+</OfficeApp>
