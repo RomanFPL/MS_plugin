@@ -12,8 +12,15 @@ export default defineConfig(({ mode }) => {
       https: false
     },
     build: {
-      outDir: 'dist'
+      outDir: 'dist',
+      rollupOptions: {
+        input: {
+          main: 'index.html',
+          commands: 'commands.html'
+        }
+      }
     },
+    publicDir: 'assets',
     define: {
       // Ensure environment variables are available at build time
       'import.meta.env.VITE_OPENAI_API_KEY': JSON.stringify(env.VITE_OPENAI_API_KEY)
