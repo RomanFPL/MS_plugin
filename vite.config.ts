@@ -11,6 +11,7 @@ export default defineConfig(({ mode }) => {
       port: 3000,
       https: false
     },
+    base: './',
     build: {
       outDir: 'dist',
       rollupOptions: {
