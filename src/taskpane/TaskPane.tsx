@@ -30,7 +30,6 @@ const TaskPane: React.FC = () => {
 
   const analyzeEmail = async (): Promise<void> => {
     return new Promise((resolve) => {
-      // Check if running in Office environment
       if (typeof Office === 'undefined' || !Office.context?.mailbox?.item) {
         logMessage("Testing mode: Using mock data");
         const mockData: EmailData = {
@@ -50,7 +49,7 @@ const TaskPane: React.FC = () => {
       const item = Office.context.mailbox.item;
       logMessage("Reading email content...");
       
-      // Get email body
+      
       item.body.getAsync(Office.CoercionType.Text, {}, (bodyResult: any) => {
         if (bodyResult.status !== Office.AsyncResultStatus.Succeeded) {
           logMessage("Error reading email body");
@@ -58,7 +57,6 @@ const TaskPane: React.FC = () => {
           return;
         }
 
-        // Get attachments
         const attachmentNames: string[] = [];
         if (item.attachments && item.attachments.length > 0) {
           for (let i = 0; i < item.attachments.length; i++) {
@@ -156,12 +154,10 @@ const TaskPane: React.FC = () => {
     
     let currentEmailData = emailData;
     
-    // First analyze email if not already done
     if (!currentEmailData) {
       logMessage('Analyzing email content first...');
       try {
         await analyzeEmail();
-        // Wait a moment for React state to update
         setTimeout(async () => {
           await generateWithOpenAI();
         }, 200);
@@ -169,7 +165,6 @@ const TaskPane: React.FC = () => {
         logMessage('Error: Could not analyze email content');
       }
     } else {
-      // Email data already available, proceed directly
       await generateWithOpenAI();
     }
   };
@@ -180,7 +175,6 @@ const TaskPane: React.FC = () => {
       return;
     }
 
-    // Check if running in Office environment
     if (typeof Office === 'undefined' || !Office.context?.mailbox?.item) {
       logMessage("Testing mode: Reply would replace email content.");
       return;
@@ -206,7 +200,6 @@ const TaskPane: React.FC = () => {
       return;
     }
 
-    // Check if running in Office environment
     if (typeof Office === 'undefined' || !Office.context?.mailbox?.item) {
       logMessage("Testing mode: Reply would be prepended to email.");
       return;
@@ -230,9 +223,8 @@ const TaskPane: React.FC = () => {
 
   return (
     <div className="container">
-      <h3 className="title">AI Email Assistant</h3>
+      <h3 className="title">Visarsoft Message Wizard</h3>
       
-      {/* Response Description Input */}
       <div className="form-group">
         <label htmlFor="responseDescription" className="form-label">What do you want to respond?</label>
         <input
@@ -245,7 +237,6 @@ const TaskPane: React.FC = () => {
         />
       </div>
 
-      {/* Response Tone Radio Buttons */}
       <div className="form-group">
         <label className="form-label">Response Format</label>
         <div className="radio-group">
@@ -282,7 +273,6 @@ const TaskPane: React.FC = () => {
         </div>
       </div>
 
-      {/* Generate Reply Button */}
       <div className="form-group">
         <button 
           onClick={handleGenerate}
@@ -292,7 +282,6 @@ const TaskPane: React.FC = () => {
         </button>
       </div>
 
-      {/* Email Data Display (only after analysis) */}
       {emailData && (
         <div className="email-data">
           <h4 className="email-data-title">Email Data:</h4>
@@ -304,7 +293,7 @@ const TaskPane: React.FC = () => {
         </div>
       )}
       
-      {/* Generated Reply Display */}
+      
       <div className="form-group">
         <label htmlFor="replyText" className="form-label">Generated Reply</label>
         <textarea
@@ -317,7 +306,7 @@ const TaskPane: React.FC = () => {
         />
       </div>
       
-      {/* Insert Buttons */}
+      
       <div className="form-group">
         <div className="btn-grid">
           <button 
@@ -338,7 +327,7 @@ const TaskPane: React.FC = () => {
         </div>
       </div>
       
-      {/* Log Display */}
+      
       <div className="form-group">
         <div className="log-display">{log}</div>
       </div>

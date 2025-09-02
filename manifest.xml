@@ -9,8 +9,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Visarsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Visarsoft Business"/>
-  <Description DefaultValue="Outlook add-in by Visarsoft. Analyzes incoming emails and generates possible replies via backend AI."/>
+  <DisplayName DefaultValue="Visarsoft Message Wizard"/>
+  <Description DefaultValue="AI-powered email assistant that analyzes messages and generates smart replies."/>
   <IconUrl DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://romanfpl.github.io/MS_plugin/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://romanfpl.github.io/MS_plugin/"/>
@@ -118,12 +118,12 @@
       </bt:Urls>
 
       <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="Visarsoft AI"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Open AI Assistant"/>
+        <bt:String id="GroupLabel" DefaultValue="Visarsoft Message Wizard"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Message Wizard"/>
       </bt:ShortStrings>
 
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Analyze email content and generate AI-powered replies via Visarsoft backend."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Generate smart email replies using AI technology."/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
