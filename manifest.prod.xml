@@ -32,7 +32,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="http://localhost:3000/"/>
+        <SourceLocation DefaultValue="https://romanfpl.github.io/MS_plugin/"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -113,8 +113,8 @@
       </bt:Images>
 
       <bt:Urls>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="http://localhost:3000/"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://romanfpl.github.io/MS_plugin/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://romanfpl.github.io/MS_plugin/"/>
       </bt:Urls>
 
       <bt:ShortStrings>
