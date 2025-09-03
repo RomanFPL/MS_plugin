@@ -85,7 +85,7 @@ const TaskPane: React.FC = () => {
 
   const generateWithOpenAI = async () => {
     logMessage("OpenAI generation started...");
-    const apiKey = "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";
+    const apiKey = "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";
     
     if (!apiKey) {
       logMessage("Error: OpenAI API Key not configured");
@@ -94,7 +94,7 @@ const TaskPane: React.FC = () => {
     }
 
     if (!emailData) {
-      logMessage("Error: Please analyze email first");
+      logMessage("Error: No email data available for processing");
       return;
     }
 
@@ -152,15 +152,14 @@ const TaskPane: React.FC = () => {
   const handleGenerate = async () => {
     logMessage(`Starting generation...`);
     
-    let currentEmailData = emailData;
-    
-    if (!currentEmailData) {
+    if (!emailData) {
       logMessage('Analyzing email content first...');
       try {
         await analyzeEmail();
+        // Wait a bit for state to update, then generate
         setTimeout(async () => {
           await generateWithOpenAI();
-        }, 200);
+        }, 500);
       } catch (error) {
         logMessage('Error: Could not analyze email content');
       }
