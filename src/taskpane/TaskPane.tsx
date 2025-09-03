@@ -85,7 +85,7 @@ const TaskPane: React.FC = () => {
 
   const generateWithOpenAI = async () => {
     logMessage("OpenAI generation started...");
-    const apiKey = "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";
+    const apiKey = "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";
     
     if (!apiKey) {
       logMessage("Error: OpenAI API Key not configured");
